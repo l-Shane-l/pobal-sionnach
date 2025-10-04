@@ -1,6 +1,6 @@
-# Sionnach UI - A Community-Built Irish Learning App
+# Pobal Sionnach
 
-Welcome to the official open-source repository for the Sionnach UI. This project is a community-driven effort to build a powerful and engaging Irish language learning tool that anyone can use, contribute to, and help shape.
+Welcome to the official open-source repository for Pobal Sionnach. This project is a community-driven effort to build a powerful and engaging Irish language learning tool that anyone can use, contribute to, and help shape.
 
 You can see the main application this project is based on at [www.sionnach.app](https://www.sionnach.app).
 
@@ -22,11 +22,7 @@ Unlike our main application with its thousands of users, this project is a space
 
 ## The Path to the Core Team
 
-While this is a community-led project, we are also looking for developers to join our main team. We offer a clear path for those who demonstrate their skills and commitment here.
-
-**Anyone who makes 5+ meaningful commits, or one truly remarkable contribution, will be invited to join the core Sionnach team.**
-
-Once on the core team, the expectation is that you will be a fully autonomous developer, able to manage your own work and contribute to our main, more complex application.
+This project is the primary pathway for becoming a contributor to the main Sionnach application. Developers who demonstrate a strong understanding of our architecture and make high-quality contributions will be considered for an invitation to work on the main app.
 
 ## How to Get Started: The `Scoil`
 
@@ -34,9 +30,9 @@ To get you up to speed, we've created the `Scoil` (Irish for "school") directory
 
 **Your First Steps:**
 
-1.  **Listen to the Podcast**: Start with `Scoil/01_Podcast_Project_Overview.m4a`. This will give you the high-level vision for the project and our team.
-2.  **Watch the Video**: Next, watch `Scoil/02_Video_Architecture_Walkthrough.mp4`. This 8-minute video provides a visual guide to our architecture.
-3.  **Read the Architecture Guide**: Finally, dive into the **[Scoil/ARCHITECTURE.md](Scoil/ARCHITECTURE.md)** file. This document is the key to our entire system.
+1. **Listen to the Podcast**: Start with `Scoil/01_Podcast_Project_Overview.m4a`. This audio session provides a deep dive into the philosophy behind our architecture.
+2. **Watch the Video**: Next, watch `Scoil/02_Video_Architecture_Walkthrough.mp4`. This 8-minute narrated slideshow walks you through the key concepts of our architecture, providing context for the written guide.
+3. **Read the Architecture Guide**: Finally, dive into the **[Scoil/ARCHITECTURE.md](Scoil/ARCHITECTURE.md)** file. This document is the key to our entire system.
 
 Once you have a firm grasp of the architecture, you can start exploring the code and thinking about how you can contribute.
 
@@ -49,6 +45,7 @@ When you are ready, pick a task from the suggestions below, or propose your own.
 ### Contribution Guidelines
 
 Merged contributions become part of the learning platform for the next developer. Therefore, we expect your PR to be a complete package:
+
 - **Tests**: Your feature or fix should be well-tested.
 - **Documentation**: Update any relevant documentation. If you add a new feature, document how it works.
 - **Content for Learners**: If you add a feature that requires content (like new lesson types), provide the necessary JSON data and explain how to use it.
@@ -57,21 +54,28 @@ Merged contributions become part of the learning platform for the next developer
 
 This UI was intentionally left simple. The main Sionnach app has rich feedback, animations, and more. Here are some ideas to get you started:
 
-1.  **Make the Interface More Engaging**:
-    *   Add animations for correct/incorrect answers.
-    *   Implement visual feedback when a user completes a sentence or a lesson (e.g., a progress bar, confetti).
-    *   Improve the layout and responsiveness of the custom keyboard.
+1. **Make the Interface More Engaging**:
+    - Add animations for correct/incorrect answers.
+    - Implement visual feedback when a user completes a sentence or a lesson (e.g., a progress bar, confetti).
+    - Improve the layout and responsiveness of the custom keyboard.
 
-2.  **Add New Content & Features**:
-    *   **Spaced Repetition**: Design a simple UI for a spaced repetition system (SRS). The logic can be simple for now, focusing on the user interface for reviewing words or sentences.
-    *   **On-the-Fly Lesson Creation**: Build a feature that allows users to create a simple lesson (a list of sentence pairs) directly on their device. The created lesson should be stored in a local JSON file.
-    *   **Integrate a Public API**: Find a public API (e.g., a dictionary API) and build a feature around it. All content must be self-contained within the app; no external databases.
+2. **Add New Content & Features**:
+    - **Spaced Repetition**: Design a simple UI for a spaced repetition system (SRS). The logic can be simple for now, focusing on the user interface for reviewing words or sentences.
+    - **On-the-Fly Lesson Creation**: Build a feature that allows users to create a simple lesson (a list of sentence pairs) directly on their device. The created lesson should be stored in a local JSON file.
+    - **Integrate a Public API**: Find a public API (e.g., a dictionary API) and build a feature around it. All content must be self-contained within the app; no external databases.
 
-3.  **Strengthen the Foundation**:
-    *   **Add a Testing Framework**: Set up a robust testing environment using `flutter_test` and `mocktail`. Write unit tests for our existing providers and logic. Since our architecture separates concerns, this should be straightforward.
-    *   **Implement Routing**: Integrate `go_router` to manage navigation. You could start by creating a simple "Settings" or "About" page and navigating to it. Our main app uses `go_router` with code generation, and we recommend the same approach here.
-    *   **Set Up CI/CD**: Create a GitHub Actions workflow that automatically runs `flutter analyze` on every pull request. This is a critical step to ensure code quality across the project.
-    *   **Build a Documentation Site**: Establish a GitHub Wiki or a GitHub Pages site for the project. This could host more in-depth documentation, tutorials, or architectural diagrams that don't fit in the `README.md`.
+3. **Strengthen the Foundation**:
+    - **Add a Testing Framework**: Set up a robust testing environment using `flutter_test` and `mocktail`. Write unit tests for our existing providers and logic. Since our architecture separates concerns, this should be straightforward.
+    - **Implement Routing**: Integrate `go_router` to manage navigation. You could start by creating a simple "Settings" or "About" page and navigating to it. Our main app uses `go_router` with code generation, and we recommend the same approach here.
+    - **Set Up CI/CD**: Create a GitHub Actions workflow that automatically runs `flutter analyze` on every pull request. This is a critical step to ensure code quality across the project.
+    - **Build a Documentation Site**: Establish a GitHub Wiki or a GitHub Pages site for the project. This could host more in-depth documentation, tutorials, or architectural diagrams that don't fit in the `README.md`.
+
+4. **Your Hearts Desire**:
+    - **You can add anything you like**: the only requirement is it does not
+    interrupt or break other features or parts of the app. Like any open source project
+    try to keep in mind other developers and the general direction of the app, discussion
+    should be prioritized, but with a lot of leeway given to the person writhing and maintaining
+    the code.
 
 When you submit a pull request, explain your changes and why you made them in the context of our architecture. We look forward to seeing what you build.
 
@@ -98,18 +102,6 @@ lib/
 └── style/                   # Theme, colors, and app styling
 ```
 
-## How to Impress Us
-
-We welcome contributions that improve the user interface and experience. We value quality over quantity. A small, well-implemented feature with clean code and a clear understanding of the architecture is far more impressive than a large, messy one.
-
-- **UI Improvements**: Better layouts, animations, responsiveness.
-- **Accessibility**: Screen reader support, keyboard navigation.
-- **Theming**: Dark mode improvements, color schemes.
-- **New Features**: Think about what could make the learning experience better.
-- **Bug Fixes**: UI glitches, layout issues.
-
-When you submit a pull request, explain your changes and why you made them in the context of our architecture.
-
 ## Technical Stack
 
 - **Flutter**: Cross-platform UI framework
@@ -122,8 +114,3 @@ When you submit a pull request, explain your changes and why you made them in th
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Questions?
-
-For questions about contributing or the full Sionnach app, please [contact us/open an issue].
-# pobal-sionnach
