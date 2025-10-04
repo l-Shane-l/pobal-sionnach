@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sionnach_ui_community/features/lesson/widget/lesson_screen_body.dart';
@@ -25,7 +27,7 @@ class LessonScreen extends ConsumerWidget {
           return LessonScreenBody(
             sentences: lessonDefinition.sentencePairs,
             onLessonComplete: () {
-              print("Lesson Complete!");
+              log("Lesson Complete!");
             },
           );
         },
