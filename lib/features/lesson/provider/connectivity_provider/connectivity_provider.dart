@@ -8,7 +8,7 @@ import 'connection_state.dart';
 
 class ConnectivityConstants {
   static const int poorThresholdMs = 1200;
-  static const Duration pingInterval = Duration(seconds: 12);
+  static const int pingIntervalSeconds = 12;
 }
 
 final connectivityProvider =
@@ -21,7 +21,8 @@ class ConnectivityNotifier extends Notifier<ConnectionState> {
   StreamSubscription? _connSub;
   Timer? _ping;
 
-  final _kPingInterval = ConnectivityConstants.pingInterval;
+  final _kPingInterval =
+      const Duration(seconds: ConnectivityConstants.pingIntervalSeconds);
   final _kPoorThresholdMs = ConnectivityConstants.poorThresholdMs;
 
   @override
@@ -32,6 +33,7 @@ class ConnectivityNotifier extends Notifier<ConnectionState> {
       _ping?.cancel();
     });
     _start();
+    // Initial state is online with 0 latency, prevents flash of "offline" UI
     return const ConnectionState(status: NetQuality.online, lastLatencyMs: 0);
   }
 
@@ -56,7 +58,7 @@ class ConnectivityNotifier extends Notifier<ConnectionState> {
         ? NetQuality.offline
         : (ms > _kPoorThresholdMs ? NetQuality.poor : NetQuality.online);
 
-    state = ConnectionState(
+    state = state.copyWith(
       status: status,
       lastLatencyMs: ms,
     );
