@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-part 'connection_state.freezed.dart';
+part 'connectivity_state.freezed.dart';
 
 enum NetQuality { online, poor, offline }
 
@@ -9,16 +9,16 @@ enum NetQuality { online, poor, offline }
 /// Includes convenience getters [isOnline] and [isOffline]
 
 @freezed
-class ConnectionState with _$ConnectionState {
-  const ConnectionState._();
+class ConnectivityState with _$ConnectivityState {
+  const ConnectivityState._();
 
-  const factory ConnectionState({
+  const factory ConnectivityState({
     required NetQuality status,
     required double lastLatencyMs,
-  }) = _ConnectionState;
+  }) = _ConnectivityState;
 
-  factory ConnectionState.initial() {
-    return const ConnectionState(
+  factory ConnectivityState.initial() {
+    return const ConnectivityState(
       status: NetQuality.online,
       lastLatencyMs: 0,
     );

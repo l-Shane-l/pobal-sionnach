@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
-import 'connection_state.dart';
+import 'connectivity_state.dart';
 
 class ConnectivityConstants {
   static const int poorThresholdMs = 1200;
@@ -12,12 +12,12 @@ class ConnectivityConstants {
 }
 
 final connectivityProvider =
-    NotifierProvider<ConnectivityNotifier, ConnectionState>(
+    NotifierProvider<ConnectivityNotifier, ConnectivityState>(
         () => ConnectivityNotifier());
 
 /// Provider for connectivity status
 /// Periodically pings to measure latency and determine connection quality
-class ConnectivityNotifier extends Notifier<ConnectionState> {
+class ConnectivityNotifier extends Notifier<ConnectivityState> {
   StreamSubscription? _connSub;
   Timer? _ping;
 
@@ -26,7 +26,7 @@ class ConnectivityNotifier extends Notifier<ConnectionState> {
   final _kPoorThresholdMs = ConnectivityConstants.poorThresholdMs;
 
   @override
-  ConnectionState build() {
+  ConnectivityState build() {
     ref.onDispose(() {
       /// Clean up subscriptions and timers
       _connSub?.cancel();
@@ -34,7 +34,7 @@ class ConnectivityNotifier extends Notifier<ConnectionState> {
     });
     _start();
     // Initial state is online with 0 latency, prevents flash of "offline" UI
-    return const ConnectionState(status: NetQuality.online, lastLatencyMs: 0);
+    return const ConnectivityState(status: NetQuality.online, lastLatencyMs: 0);
   }
 
   /// Start listening to connectivity changes and periodic checks
