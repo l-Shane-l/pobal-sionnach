@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sionnach_ui_community/features/lesson/model/sentence_pair/sentence_pair.dart';
 import 'package:sionnach_ui_community/features/lesson/presentation/controller/interactive_exercise_controller.dart';
 import 'package:sionnach_ui_community/features/lesson/presentation/state/interactive_exercise_state.dart';
+import 'package:sionnach_ui_community/features/lesson/widget/connectivity_banner.dart';
 import 'package:sionnach_ui_community/features/lesson/widget/current_word_input_display.dart';
 import 'package:sionnach_ui_community/features/lesson/widget/custom_keyboard_widget.dart';
 import 'package:sionnach_ui_community/features/lesson/widget/lesson_info_card.dart';
@@ -22,13 +23,13 @@ class LessonScreenBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final exerciseProvider =
-        interactiveExerciseControllerProvider(sentences);
+    final exerciseProvider = interactiveExerciseControllerProvider(sentences);
     final state = ref.watch(exerciseProvider);
     final controller = ref.read(exerciseProvider.notifier);
 
     return Column(
       children: [
+        const ConnectivityBanner(),
         LessonInfoCard(
           totalSentences: state.totalSentences,
           currentSentenceIndex: state.currentSentenceIndex,
