@@ -1,11 +1,11 @@
 import 'package:sionnach_ui_community/features/lesson/provider/connectivity_provider/connectivity_provider.dart';
 import 'package:sionnach_ui_community/features/lesson/provider/connectivity_provider/connectivity_state.dart';
 
-/// A mock connectivity notifier for testing purposes
+/// A fake connectivity notifier for testing purposes
 /// Use [emit] to change the state
 
-class MockConnectivityNotifier extends ConnectivityNotifier {
-  MockConnectivityNotifier() : super();
+class ManualConnectivityNotifier extends ConnectivityNotifier {
+  ManualConnectivityNotifier() : super();
   @override
   ConnectivityState build() =>
       const ConnectivityState(status: NetQuality.online, lastLatencyMs: 0);

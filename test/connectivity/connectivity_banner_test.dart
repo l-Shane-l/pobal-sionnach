@@ -5,19 +5,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sionnach_ui_community/features/lesson/provider/connectivity_provider/connectivity_provider.dart';
 import 'package:sionnach_ui_community/features/lesson/widget/connectivity_banner.dart';
 import 'package:sionnach_ui_community/features/lesson/provider/connectivity_provider/connectivity_state.dart';
-import 'mocks/mock_connectivity_provider.dart';
+import '../fakes/manual_connectivity_provider.dart';
 
 void main() {
-  late MockConnectivityNotifier mock;
+  late ManualConnectivityNotifier connectivityNotifier;
   late ProviderScope testScope;
 
   setUp(() {
-    mock = MockConnectivityNotifier();
+    connectivityNotifier = ManualConnectivityNotifier();
 
     testScope = ProviderScope(
       overrides: [
-        // Replace the NotifierProvider with mocked version
-        connectivityProvider.overrideWith(() => mock),
+        // Replace the NotifierProvider with connectivityNotifiered version
+        connectivityProvider.overrideWith(() => connectivityNotifier),
       ],
       child: const MaterialApp(home: Scaffold(body: ConnectivityBanner())),
     );
@@ -31,17 +31,18 @@ void main() {
     expect(find.textContaining('slow'), findsNothing);
 
     // Flip to offline
-    mock.emit(NetQuality.offline);
+    connectivityNotifier.emit(NetQuality.offline);
     await tester.pumpAndSettle();
     expect(find.textContaining('offline'), findsOneWidget);
 
     // Flip to poor with specific latency greater than threshold (+1)
-    mock.emit(NetQuality.poor, ConnectivityConstants.poorThresholdMs + 1);
+    connectivityNotifier.emit(
+        NetQuality.poor, ConnectivityConstants.poorThresholdMs + 1);
     await tester.pumpAndSettle();
     expect(find.textContaining('slow'), findsOneWidget);
 
     // Back online: nothing visible again
-    mock.emit(NetQuality.online);
+    connectivityNotifier.emit(NetQuality.online);
 
     await tester.pumpAndSettle();
     expect(find.textContaining('offline'), findsNothing);
@@ -53,7 +54,7 @@ void main() {
     await tester.pumpWidget(testScope);
 
     // Show banner first (offline)
-    mock.emit(NetQuality.offline);
+    connectivityNotifier.emit(NetQuality.offline);
     await tester.pumpAndSettle();
     expect(find.textContaining('offline'), findsOneWidget);
 
@@ -65,12 +66,12 @@ void main() {
     expect(find.textContaining('offline'), findsNothing);
 
     // Status change resets local "dismissed" and shows again
-    mock.emit(NetQuality.poor, 1200);
+    connectivityNotifier.emit(NetQuality.poor, 1200);
     await tester.pumpAndSettle();
     expect(find.textContaining('slow'), findsOneWidget);
 
     // And going back online hides it again
-    mock.emit(NetQuality.online);
+    connectivityNotifier.emit(NetQuality.online);
     await tester.pumpAndSettle();
     expect(find.textContaining('offline'), findsNothing);
     expect(find.textContaining('slow'), findsNothing);

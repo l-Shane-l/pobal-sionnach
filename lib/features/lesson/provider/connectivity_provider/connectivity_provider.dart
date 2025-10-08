@@ -13,17 +13,30 @@ class ConnectivityConstants {
 
 final connectivityProvider =
     NotifierProvider<ConnectivityNotifier, ConnectivityState>(
-        () => ConnectivityNotifier());
+        () => ConnectivityNotifier(
+              Connectivity(),
+              InternetConnection(),
+              () => Stopwatch(),
+              ConnectivityConstants.pingIntervalSeconds,
+              ConnectivityConstants.poorThresholdMs,
+            ));
 
 /// Provider for connectivity status
 /// Periodically pings to measure latency and determine connection quality
 class ConnectivityNotifier extends Notifier<ConnectivityState> {
+  final Connectivity _connectivity;
+  final InternetConnection _internetConnection;
+  //Allows for creation and disposal of a new Stopwatch on each check
+  final Function() _stopwatch;
+  final int _kPingIntervalSeconds;
+  final int _kPoorThresholdMs;
+
+  ConnectivityNotifier(this._connectivity, this._internetConnection,
+      this._stopwatch, this._kPingIntervalSeconds, this._kPoorThresholdMs);
+
   StreamSubscription? _connSub;
   Timer? _ping;
-
-  final _kPingInterval =
-      const Duration(seconds: ConnectivityConstants.pingIntervalSeconds);
-  final _kPoorThresholdMs = ConnectivityConstants.poorThresholdMs;
+  late final _kPingInterval = Duration(seconds: _kPingIntervalSeconds);
 
   @override
   ConnectivityState build() {
@@ -42,21 +55,25 @@ class ConnectivityNotifier extends Notifier<ConnectivityState> {
   /// Subsequent checks are performed every [_kPingInterval]
   /// On connectivity change, an immediate check is performed
   void _start() {
-    _connSub = Connectivity().onConnectivityChanged.listen((_) => _checkNow());
+    final stream = _connectivity.onConnectivityChanged;
+    _connSub = stream.listen((_) => _checkNow());
     _checkNow();
-    _ping = Timer.periodic(_kPingInterval, (_) => _checkNow());
+    final interval = _kPingInterval;
+    _ping = Timer.periodic(interval, (_) => _checkNow());
   }
 
   /// Perform an immediate connectivity check
   /// Measures latency and updates state with [NetQuality] and [_kPoorThresholdMs]
   Future<void> _checkNow() async {
-    final sw = Stopwatch()..start();
-    final hasInternet = await InternetConnection().hasInternetAccess;
+    final sw = _stopwatch.call();
+    sw.start();
+    final hasInternet = await _internetConnection.hasInternetAccess;
     sw.stop();
     final ms = sw.elapsedMilliseconds.toDouble();
+    final thresholdMs = _kPoorThresholdMs;
     final status = !hasInternet
         ? NetQuality.offline
-        : (ms > _kPoorThresholdMs ? NetQuality.poor : NetQuality.online);
+        : (ms > thresholdMs ? NetQuality.poor : NetQuality.online);
 
     state = state.copyWith(
       status: status,
