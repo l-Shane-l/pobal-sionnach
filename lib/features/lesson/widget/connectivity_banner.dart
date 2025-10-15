@@ -20,6 +20,7 @@ class _ConnectivityBannerState extends ConsumerState<ConnectivityBanner> {
   @override
   Widget build(BuildContext context) {
     final network = ref.watch(connectivityControllerProvider);
+    final networkControls = ref.read(connectivityControllerProvider.notifier);
 
     // reset dismissed if status changed
     if (network.status != _lastStatus) {
@@ -64,6 +65,20 @@ class _ConnectivityBannerState extends ConsumerState<ConnectivityBanner> {
               });
             },
             child: const Text('Dismiss'),
+          ),
+          TextButton(
+            onPressed: () {
+              //Stop collecting network status
+              networkControls.stop();
+            },
+            child: const Text('Stop'),
+          ),
+          TextButton(
+            onPressed: () {
+              //Start collecting network status
+              networkControls.start();
+            },
+            child: const Text('Start'),
           ),
         ],
       ),
