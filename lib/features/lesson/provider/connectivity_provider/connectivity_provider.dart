@@ -11,19 +11,23 @@ class ConnectivityConstants {
   static const int pingIntervalSeconds = 12;
 }
 
-final connectivityProvider =
-    NotifierProvider<ConnectivityNotifier, ConnectivityState>(
-        () => ConnectivityNotifier(
-              Connectivity(),
-              InternetConnection(),
-              () => Stopwatch(),
-              ConnectivityConstants.pingIntervalSeconds,
-              ConnectivityConstants.poorThresholdMs,
-            ));
+abstract class BaseConnectivityNotifier<T> extends Notifier<ConnectivityState> {
+  Future<void> _checkNow();
+}
+
+final connectivityProvider = NotifierProvider<
+        BaseConnectivityNotifier<ConnectivityState>, ConnectivityState>(
+    () => ConnectivityNotifier(
+          Connectivity(),
+          InternetConnection(),
+          () => Stopwatch(),
+          ConnectivityConstants.pingIntervalSeconds,
+          ConnectivityConstants.poorThresholdMs,
+        ));
 
 /// Provider for connectivity status
 /// Periodically pings to measure latency and determine connection quality
-class ConnectivityNotifier extends Notifier<ConnectivityState> {
+class ConnectivityNotifier extends BaseConnectivityNotifier<ConnectivityState> {
   final Connectivity _connectivity;
   final InternetConnection _internetConnection;
   //Allows for creation and disposal of a new Stopwatch on each check
@@ -31,6 +35,7 @@ class ConnectivityNotifier extends Notifier<ConnectivityState> {
   final int _kPingIntervalSeconds;
   final int _kPoorThresholdMs;
 
+  @override
   ConnectivityNotifier(this._connectivity, this._internetConnection,
       this._stopwatch, this._kPingIntervalSeconds, this._kPoorThresholdMs);
 
@@ -64,6 +69,7 @@ class ConnectivityNotifier extends Notifier<ConnectivityState> {
 
   /// Perform an immediate connectivity check
   /// Measures latency and updates state with [NetQuality] and [_kPoorThresholdMs]
+  @override
   Future<void> _checkNow() async {
     final sw = _stopwatch.call();
     sw.start();

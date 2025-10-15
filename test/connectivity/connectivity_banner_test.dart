@@ -16,7 +16,7 @@ void main() {
 
     testScope = ProviderScope(
       overrides: [
-        // Replace the NotifierProvider with connectivityNotifiered version
+        // Replace the NotifierProvider with manual version
         connectivityProvider.overrideWith(() => connectivityNotifier),
       ],
       child: const MaterialApp(home: Scaffold(body: ConnectivityBanner())),

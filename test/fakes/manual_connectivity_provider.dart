@@ -4,11 +4,13 @@ import 'package:sionnach_ui_community/features/lesson/provider/connectivity_prov
 /// A fake connectivity notifier for testing purposes
 /// Use [emit] to change the state
 
-class ManualConnectivityNotifier extends ConnectivityNotifier {
-  ManualConnectivityNotifier() : super();
+class ManualConnectivityNotifier
+    extends BaseConnectivityNotifier<ConnectivityState> {
   @override
   ConnectivityState build() =>
       const ConnectivityState(status: NetQuality.online, lastLatencyMs: 0);
+  @override
+  Future<void> _checkNow() async {}
   void emit(NetQuality s, [double ms = 0]) =>
       state = ConnectivityState(status: s, lastLatencyMs: ms);
 }
