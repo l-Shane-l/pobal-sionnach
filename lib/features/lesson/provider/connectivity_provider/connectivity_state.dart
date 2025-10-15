@@ -1,12 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'connectivity_state.freezed.dart';
 
-enum NetQuality { online, poor, offline }
+enum NetQuality { online, poor, offline, invalid }
 
 /// Immutable state for connectivity status
 /// - [status]: current network quality
 /// - [lastLatencyMs]: last measured latency in milliseconds
-/// Includes convenience getters [isOnline] and [isOffline]
+/// Includes convenience getters [isOnline] [isOffline] and [valid]
 
 @freezed
 class ConnectivityState with _$ConnectivityState {
@@ -26,4 +26,5 @@ class ConnectivityState with _$ConnectivityState {
 
   bool get isOnline => status == NetQuality.online;
   bool get isOffline => status == NetQuality.offline;
+  bool get valid => status != NetQuality.invalid;
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../provider/connectivity_provider/connectivity_provider.dart';
-
+import '../presentation/controller/connectivity_controller.dart';
 import '../provider/connectivity_provider/connectivity_state.dart';
 
 class ConnectivityBanner extends ConsumerStatefulWidget {
@@ -14,27 +13,36 @@ class ConnectivityBanner extends ConsumerStatefulWidget {
 class _ConnectivityBannerState extends ConsumerState<ConnectivityBanner> {
   //UI State is tracked here to allow dismissal of the banner
   //and to avoid re-showing it until the status changes again
+  //without maintaining UI state in the Controller
   NetQuality? _lastStatus;
   bool _dismissed = false;
 
   @override
   Widget build(BuildContext context) {
-    final network = ref.watch(connectivityProvider);
+    final network = ref.watch(connectivityControllerProvider);
 
+    // reset dismissed if status changed
     if (network.status != _lastStatus) {
       _lastStatus = network.status;
       _dismissed = false;
     }
     // only show if not online and not dismissed
+    // else return nothing
     if (network.isOnline || _dismissed) {
       return const SizedBox.shrink();
     }
 
     final isOffline = network.isOffline;
-    final text = isOffline
-        ? 'You are offline.'
-        : 'Your connection is slow (${network.lastLatencyMs.toStringAsFixed(0)} ms)…';
-    final color = isOffline ? Colors.red : Colors.orange;
+    final isValid = network.valid;
+
+    final (text, color) = switch ((isOffline, isValid)) {
+      (true, _) => ('You are offline.', Colors.red),
+      (false, false) => ('Connection check unavailable.', Colors.grey),
+      (false, true) => (
+          'Your connection is slow (${network.lastLatencyMs.toStringAsFixed(0)} ms)…',
+          Colors.orange
+        )
+    };
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
