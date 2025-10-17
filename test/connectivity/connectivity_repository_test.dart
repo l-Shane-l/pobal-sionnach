@@ -6,8 +6,6 @@ import 'package:sionnach_ui_community/features/lesson/repository/connectivity_re
 
 class MockInternetConnection extends Mock implements InternetConnection {}
 
-class MockStopwatch extends Mock implements Stopwatch {}
-
 void main() {
   const longDelay = 100; // ms
 
@@ -26,33 +24,17 @@ void main() {
     // Default mock behavior: return true (reachable), delay 0ms (fast)
     // Each call pops the next value from connections, or true if empty
     // Called on each sample()
-    //
-    // Note: we don't simulate or time real delay here;
-    // instead we mock the Stopwatch response to control the reported latency
-    // We could simulate delay by making this async and awaiting a Future.delayed
-    // but Stopwatch does not respect fake time
-    // So this is simpler to control, and is sufficient for these testing purposes
     when(() => mockConn.hasInternetAccess).thenAnswer((_) async {
-      final next = connections.isNotEmpty
-          ? connections.removeAt(0)
-          : currentConnection; //TestConnection(ok: true, delay: Duration.zero); // fallback
-      // await Future.delayed(next.delay);
+      final next =
+          connections.isNotEmpty ? connections.removeAt(0) : currentConnection;
+      await Future.delayed(Duration(milliseconds: next.latencyMs));
       currentConnection = next;
       return next.hasInternet;
     });
 
-    //Repo dependencies are mocked to control real-world inputs
-    //like timing and connection availability
     repo = ConnectivityRepository(
-        internet: mockConn,
-        stopwatch: () {
-          MockStopwatch newWatch = MockStopwatch();
-          //Simlate the elapsed time based on the current connection's delay
-          when(() => newWatch.elapsedMilliseconds)
-              .thenAnswer((_) => currentConnection.latencyMs);
-
-          return newWatch;
-        });
+      internet: mockConn,
+    );
   });
 
   tearDown(() {
@@ -74,15 +56,13 @@ void main() {
     final s = await repo.sample();
 
     expect(s.hasInternet, true);
-    expect(s.latencyMs, 0);
+    expect(s.latencyMs, greaterThan(0));
   });
 
   test('poor vs online depends on latency when internet is reachable - online',
       () async {
     // Reachable -> should be ONLINE if lower than threshold
-    connections = [
-      const ConnectivitySample(hasInternet: true, latencyMs: longDelay - 1)
-    ];
+    connections = [const ConnectivitySample(hasInternet: true, latencyMs: 1)];
 
     //check state with low latency
     final s = await repo.sample();
