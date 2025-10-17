@@ -1,5 +1,5 @@
 import 'package:sionnach_ui_community/features/lesson/provider/connectivity_provider/connectivity_provider.dart';
-import 'package:sionnach_ui_community/features/lesson/provider/connectivity_provider/connectivity_state.dart';
+import 'package:sionnach_ui_community/features/lesson/presentation/state/connectivity_state.dart';
 
 /// A fake connectivity notifier for testing purposes
 /// Use [emit] to change the state

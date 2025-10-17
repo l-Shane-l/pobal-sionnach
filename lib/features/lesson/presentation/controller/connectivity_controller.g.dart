@@ -7,7 +7,7 @@ part of 'connectivity_controller.dart';
 // **************************************************************************
 
 String _$connectivityControllerHash() =>
-    r'0cabd64b6e570500f1d114524743f6decc7d42d2';
+    r'8b657ab12416b0e43365e3a875b73d99c6cc4a68';
 
 /// See also [ConnectivityController].
 @ProviderFor(ConnectivityController)

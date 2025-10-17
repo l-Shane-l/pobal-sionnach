@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
-import 'connectivity_state.dart';
+import '../../presentation/state/connectivity_state.dart';
 
 class ConnectivityConstants {
   static const int poorThresholdMs = 1200;

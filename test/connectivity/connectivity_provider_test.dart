@@ -7,7 +7,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'package:sionnach_ui_community/features/lesson/provider/connectivity_provider/connectivity_provider.dart';
-import 'package:sionnach_ui_community/features/lesson/provider/connectivity_provider/connectivity_state.dart';
+import 'package:sionnach_ui_community/features/lesson/presentation/state/connectivity_state.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
 class MockInternetConnection extends Mock implements InternetConnection {}

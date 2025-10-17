@@ -1,7 +1,7 @@
 // feature/connectivity/connectivity_controller.dart
 import 'dart:async';
 import '../../repository/connectivity_repository.dart';
-import '../../provider/connectivity_provider/connectivity_state.dart';
+import '../state/connectivity_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'connectivity_controller.g.dart';
@@ -23,7 +23,7 @@ class ConnectivityController extends _$ConnectivityController {
   final _kPingInterval =
       const Duration(seconds: ConnectivityConstants.pingIntervalSeconds);
 
-  BaseConnectivityRepository get _repo => ref.watch(connectivityRepoProvider);
+  late BaseConnectivityRepository _repo;
 
   @override
   ConnectivityState build() {
@@ -32,15 +32,14 @@ class ConnectivityController extends _$ConnectivityController {
       _ping?.cancel();
     });
 
-    //checkSample()
+    _repo = ref.watch(connectivityRepoProvider);
+
     start();
 
     return ConnectivityState.initial();
   }
 
   void start() {
-    //TODO: Initial probe, immediate return each time or not?
-    //May cause UI flash either way
     checkSample();
 
     _connSub = _repo.connectionStream().listen((_) => checkSample());
@@ -59,19 +58,28 @@ class ConnectivityController extends _$ConnectivityController {
   }
 
   Future<void> checkSample() async {
-    final sample = await _repo.sample();
+    final r = _repo;
+    final sample = await r.sample();
+
+    final status = defineStatus(sample);
+
+    final next = state.copyWith(
+        status: status, lastLatencyMs: sample.latencyMs.toDouble());
+
+    //
+    if (next.status != state.status ||
+        next.lastLatencyMs != state.lastLatencyMs) {
+      state = next;
+    }
+  }
+
+  NetQuality defineStatus(ConnectivitySample sample) {
     final status = !sample.hasInternet
         ? NetQuality.offline
         : (sample.latencyMs > _kPoorThresholdMs
             ? NetQuality.poor
             : NetQuality.online);
 
-    final next = state.copyWith(
-        status: status, lastLatencyMs: sample.latencyMs.toDouble());
-
-    if (next.status != state.status ||
-        next.lastLatencyMs != state.lastLatencyMs) {
-      state = next;
-    }
+    return status;
   }
 }

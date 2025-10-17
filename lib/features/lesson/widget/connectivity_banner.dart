@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../presentation/controller/connectivity_controller.dart';
-import '../provider/connectivity_provider/connectivity_state.dart';
+import '../presentation/state/connectivity_state.dart';
 
 class ConnectivityBanner extends ConsumerStatefulWidget {
   const ConnectivityBanner({super.key});

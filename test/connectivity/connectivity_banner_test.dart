@@ -2,28 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:sionnach_ui_community/features/lesson/provider/connectivity_provider/connectivity_provider.dart';
 import 'package:sionnach_ui_community/features/lesson/widget/connectivity_banner.dart';
-import 'package:sionnach_ui_community/features/lesson/provider/connectivity_provider/connectivity_state.dart';
-import '../fakes/manual_connectivity_provider.dart';
+import 'package:sionnach_ui_community/features/lesson/presentation/state/connectivity_state.dart';
+import 'package:sionnach_ui_community/features/lesson/presentation/controller/connectivity_controller.dart';
+
+import '../fakes/manual_connectivity_controller.dart';
+
+const connectionTime = 100;
 
 void main() {
-  late ManualConnectivityNotifier connectivityNotifier;
+  late ManualConnectivityController connectivityNotifier;
   late ProviderScope testScope;
 
   setUp(() {
-    connectivityNotifier = ManualConnectivityNotifier();
+    connectivityNotifier = ManualConnectivityController();
 
     testScope = ProviderScope(
       overrides: [
-        // Replace the NotifierProvider with manual version
-        connectivityProvider.overrideWith(() => connectivityNotifier),
+        // Replace the Controller with manual version
+        connectivityControllerProvider.overrideWith(() => connectivityNotifier),
       ],
       child: const MaterialApp(home: Scaffold(body: ConnectivityBanner())),
     );
   });
 
-  testWidgets('Banner hides online, shows offline/poor', (tester) async {
+  testWidgets('Banner hides online, shows offline/poor/invalid',
+      (tester) async {
     await tester.pumpWidget(testScope);
 
     // Start online: nothing visible
@@ -36,10 +40,14 @@ void main() {
     expect(find.textContaining('offline'), findsOneWidget);
 
     // Flip to poor with specific latency greater than threshold (+1)
-    connectivityNotifier.emit(
-        NetQuality.poor, ConnectivityConstants.poorThresholdMs + 1);
+    connectivityNotifier.emit(NetQuality.poor, connectionTime + 1);
     await tester.pumpAndSettle();
     expect(find.textContaining('slow'), findsOneWidget);
+
+    // Show invalid state
+    connectivityNotifier.emit(NetQuality.invalid, -1);
+    await tester.pumpAndSettle();
+    expect(find.textContaining('unavailable'), findsOneWidget);
 
     // Back online: nothing visible again
     connectivityNotifier.emit(NetQuality.online);
