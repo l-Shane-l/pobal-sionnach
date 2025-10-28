@@ -11,9 +11,8 @@ class ConnectivityConstants {
   static const int pingIntervalSeconds = 12;
 }
 
-abstract class BaseConnectivityNotifier<T> extends Notifier<ConnectivityState> {
-  Future<void> _checkNow();
-}
+abstract class BaseConnectivityNotifier<T>
+    extends Notifier<ConnectivityState> {}
 
 final connectivityProvider = NotifierProvider<
         BaseConnectivityNotifier<ConnectivityState>, ConnectivityState>(
@@ -69,7 +68,6 @@ class ConnectivityNotifier extends BaseConnectivityNotifier<ConnectivityState> {
 
   /// Perform an immediate connectivity check
   /// Measures latency and updates state with [NetQuality] and [_kPoorThresholdMs]
-  @override
   Future<void> _checkNow() async {
     final sw = _stopwatch.call();
     sw.start();

@@ -24,8 +24,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   const longDelay = 1200; // ms
-  const pingDelay =
-      12; // seconds -- TODO not aligned with real time ping schedule??
+  const pingDelay = 5; // seconds
 
   final repo = MockRepp();
 

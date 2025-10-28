@@ -1,4 +1,3 @@
-// feature/connectivity/connectivity_controller.dart
 import 'dart:async';
 import '../../repository/connectivity_repository.dart';
 import '../state/connectivity_state.dart';
@@ -8,7 +7,7 @@ part 'connectivity_controller.g.dart';
 
 class ConnectivityConstants {
   static const int poorThresholdMs = 1200;
-  static const int pingIntervalSeconds = 12;
+  static const int pingIntervalSeconds = 5;
 }
 
 //Control Constants  [_kPingInterval] [_kPoorThreshold]
@@ -39,6 +38,10 @@ class ConnectivityController extends _$ConnectivityController {
     return ConnectivityState.initial();
   }
 
+  /// Start listening to connectivity changes and periodic checks
+  /// Initial check is performed immediately
+  /// Subsequent checks are performed every [_kPingInterval]
+  /// On connectivity change, an immediate check is performed
   void start() {
     checkSample();
 
@@ -57,6 +60,8 @@ class ConnectivityController extends _$ConnectivityController {
     state = state.copyWith(status: NetQuality.invalid, lastLatencyMs: -1);
   }
 
+  /// Perform an immediate connectivity check
+  /// Measures latency and updates state with [NetQuality] and [_kPoorThresholdMs]
   Future<void> checkSample() async {
     final r = _repo;
     final sample = await r.sample();
