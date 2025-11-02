@@ -22,7 +22,10 @@ class InteractiveExerciseController extends _$InteractiveExerciseController {
   void onKeyPressed(String key) {
     if (state.lessonState == LessonState.completed) return;
 
-    if (key.toLowerCase() ==
+    if ((state.currentUserInput + key).length >
+        state.currentTargetWord.length) {
+      // Do nothing if input exceeds target word length) {
+    } else if (key.toLowerCase() ==
         state.currentTargetWord[state.currentUserInput.length].toLowerCase()) {
       state = state.copyWith(
         currentUserInput: state.currentUserInput + key,
@@ -33,7 +36,9 @@ class InteractiveExerciseController extends _$InteractiveExerciseController {
         // Word complete logic is handled in onCorrectWordSubmitted
       }
     } else {
-      state = state.copyWith(isCurrentWordCorrect: false);
+      state = state.copyWith(
+          currentUserInput: state.currentUserInput + key,
+          isCurrentWordCorrect: false);
     }
   }
 
