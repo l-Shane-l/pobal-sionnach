@@ -6,7 +6,6 @@ import 'package:sionnach_ui_community/features/lesson/presentation/controller/in
 import 'package:sionnach_ui_community/features/lesson/presentation/state/interactive_exercise_state.dart';
 import 'package:sionnach_ui_community/features/lesson/widget/current_word_input_display.dart';
 import 'package:sionnach_ui_community/features/lesson/widget/custom_keyboard_widget.dart';
-import 'package:sionnach_ui_community/features/lesson/widget/gaeilge_keyboard_widget.dart';
 import 'package:sionnach_ui_community/features/lesson/widget/lesson_info_card.dart';
 import 'package:sionnach_ui_community/features/lesson/widget/sentence_complete_celebration.dart';
 import 'package:sionnach_ui_community/features/lesson/widget/simple_irish_sentence_display.dart';
@@ -23,8 +22,7 @@ class LessonScreenBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final exerciseProvider =
-        interactiveExerciseControllerProvider(sentences);
+    final exerciseProvider = interactiveExerciseControllerProvider(sentences);
     final state = ref.watch(exerciseProvider);
     final controller = ref.read(exerciseProvider.notifier);
 
@@ -69,7 +67,7 @@ class LessonScreenBody extends ConsumerWidget {
           ),
         ),
         if (state.lessonState != LessonState.completed)
-          GaeilgeKeyboardWidget(
+          CustomKeyboardWidget(
             onLetterTap: controller.onKeyPressed,
             onBackspaceTap: controller.onBackspace,
             onShiftTap: () {},
