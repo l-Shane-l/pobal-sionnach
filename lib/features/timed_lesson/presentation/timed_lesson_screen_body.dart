@@ -43,13 +43,6 @@ class TimedLessonScreenBody extends ConsumerWidget {
       });
     }
 
-    ref.listen(exerciseProvider, (previous, next) {
-      if (previous == null || previous.sentences != next.sentences) {
-        //TODO as type check - exerciseLessonType required
-        controller.beginTiming();
-      }
-    });
-
     final mainContent = Column(
       children: [
         LessonInfoCard(

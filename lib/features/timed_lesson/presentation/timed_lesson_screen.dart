@@ -44,7 +44,7 @@ class TimedLessonScreen extends ConsumerWidget {
                 child: SizedBox(
                   height: double.infinity,
                   child: IgnorePointer(
-                    ignoring: false, // allow interaction with the panel
+                    ignoring: false, // allow scroll interaction with the panel
                     child: Padding(
                       padding:
                           EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
