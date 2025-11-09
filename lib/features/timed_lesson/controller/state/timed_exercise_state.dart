@@ -1,15 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sionnach_ui_community/features/lesson/model/sentence_pair/sentence_pair.dart';
+import 'package:sionnach_ui_community/base/model/lesson_state.dart';
 
-import '../../../../base/model/lesson_state.dart';
-
-part 'interactive_exercise_state.freezed.dart';
+part 'timed_exercise_state.freezed.dart';
 
 @freezed
-class InteractiveExerciseState with _$InteractiveExerciseState {
-  const InteractiveExerciseState._();
+class TimedExerciseState with _$TimedExerciseState {
+  const TimedExerciseState._();
 
-  const factory InteractiveExerciseState({
+  const factory TimedExerciseState({
     required List<SentencePair> sentences,
     required int currentSentenceIndex,
     required int currentWordIndex,
@@ -21,13 +20,13 @@ class InteractiveExerciseState with _$InteractiveExerciseState {
     required bool isWordRevealed,
     required bool isShiftEnabled,
     required bool isFadaEnabled,
-  }) = _InteractiveExerciseState;
+  }) = _TimedExerciseState;
 
-  factory InteractiveExerciseState.initial({
+  factory TimedExerciseState.initial({
     required List<SentencePair> sentences,
     SentencePair? currentSentence,
   }) {
-    return InteractiveExerciseState(
+    return TimedExerciseState(
       sentences: sentences,
       currentSentenceIndex:
           currentSentence != null ? sentences.indexOf(currentSentence) : 0,

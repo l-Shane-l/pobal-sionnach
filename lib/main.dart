@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sionnach_ui_community/lesson_screen.dart';
+import 'package:sionnach_ui_community/features/lesson/widget/lesson_screen.dart';
+import 'package:sionnach_ui_community/features/timed_lesson/presentation/timed_lesson_screen.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const LessonScreen(
+      home: const TimedLessonScreen(
         plantedTreeId: 'dummy_lesson', // Using a dummy ID
       ),
     );

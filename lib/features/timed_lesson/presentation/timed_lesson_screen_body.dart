@@ -2,19 +2,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sionnach_ui_community/features/lesson/model/sentence_pair/sentence_pair.dart';
-import 'package:sionnach_ui_community/features/lesson/presentation/controller/interactive_exercise_controller.dart';
+import 'package:sionnach_ui_community/base/model/lesson_state.dart';
 import 'package:sionnach_ui_community/base/widget/current_word_input_display.dart';
 import 'package:sionnach_ui_community/base/widget/custom_keyboard_widget.dart';
 import 'package:sionnach_ui_community/base/widget/lesson_info_card.dart';
 import 'package:sionnach_ui_community/base/widget/sentence_complete_celebration.dart';
 import 'package:sionnach_ui_community/base/widget/simple_irish_sentence_display.dart';
-import 'package:sionnach_ui_community/base/model/lesson_state.dart';
 
-class LessonScreenBody extends ConsumerWidget {
+import '../controller/timed_exercise_controller.dart';
+import 'widget/side_panel.dart';
+
+//Internal provider to help manage initial timing state
+// with respect to the screen lifecycle
+final timingStartedProvider = StateProvider<bool>((ref) => false);
+
+class TimedLessonScreenBody extends ConsumerWidget {
   final List<SentencePair> sentences;
   final VoidCallback onLessonComplete;
 
-  const LessonScreenBody({
+  const TimedLessonScreenBody({
     super.key,
     required this.sentences,
     required this.onLessonComplete,
@@ -22,11 +28,29 @@ class LessonScreenBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final exerciseProvider = interactiveExerciseControllerProvider(sentences);
+    final started = ref.watch(timingStartedProvider);
+
+    final exerciseProvider = timedExerciseControllerProvider(sentences);
     final state = ref.watch(exerciseProvider);
     final controller = ref.read(exerciseProvider.notifier);
 
-    return Column(
+    if (!started) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!ref.read(timingStartedProvider)) {
+          ref.read(timingStartedProvider.notifier).state = true;
+          controller.beginTiming();
+        }
+      });
+    }
+
+    ref.listen(exerciseProvider, (previous, next) {
+      if (previous == null || previous.sentences != next.sentences) {
+        //TODO as type check
+        controller.beginTiming();
+      }
+    });
+
+    final mainContent = Column(
       children: [
         LessonInfoCard(
           totalSentences: state.totalSentences,
@@ -72,6 +96,27 @@ class LessonScreenBody extends ConsumerWidget {
             onBackspaceTap: controller.onBackspace,
             onShiftTap: () {},
           ),
+      ],
+    );
+
+    return Stack(
+      children: [
+        Positioned.fill(child: mainContent),
+        const Positioned(
+          right: 0,
+          top: 0,
+          bottom: 0,
+          child: SizedBox(
+            height: double.infinity,
+            child: IgnorePointer(
+              ignoring: false, // allow interaction with the panel
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                child: SidePanel(),
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }
