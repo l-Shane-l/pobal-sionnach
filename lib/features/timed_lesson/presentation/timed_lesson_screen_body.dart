@@ -45,7 +45,7 @@ class TimedLessonScreenBody extends ConsumerWidget {
 
     ref.listen(exerciseProvider, (previous, next) {
       if (previous == null || previous.sentences != next.sentences) {
-        //TODO as type check
+        //TODO as type check - exerciseLessonType required
         controller.beginTiming();
       }
     });
@@ -101,7 +101,21 @@ class TimedLessonScreenBody extends ConsumerWidget {
 
     return Stack(
       children: [
-        const Positioned.fill(child: PanelWidget()),
+        const Positioned(
+          left: 0,
+          top: 100, // LessonInfoCard height offset
+          bottom: 0,
+          child: SizedBox(
+            height: double.infinity,
+            child: IgnorePointer(
+              ignoring: false, // allow scroll interaction with the panel
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                child: PanelWidget(),
+              ),
+            ),
+          ),
+        ),
         Positioned.fill(child: mainContent),
       ],
     );
