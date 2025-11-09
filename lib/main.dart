@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sionnach_ui_community/features/lesson/widget/lesson_screen.dart';
 import 'package:sionnach_ui_community/features/timed_lesson/presentation/timed_lesson_screen.dart';
 
 void main() {

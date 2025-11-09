@@ -7,7 +7,7 @@ part of 'timed_exercise_controller.dart';
 // **************************************************************************
 
 String _$timedExerciseControllerHash() =>
-    r'f073940003f92ec3c181b767a88730dd83fec4cb';
+    r'0d6b6c2eaba353e0c2fd042918936ba741a44487';
 
 /// Copied from Dart SDK
 class _SystemHash {

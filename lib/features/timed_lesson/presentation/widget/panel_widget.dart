@@ -103,7 +103,10 @@ class _PanelWidgetState extends ConsumerState<PanelWidget>
               curve: Curves.easeOutCubic,
               width: isVisible ? keyboardHeight : 0,
               alignment: Alignment.topLeft,
-              child: isVisible ? const ExerciseTimePanel() : null,
+              child: isVisible
+                  ? const SingleChildScrollView(
+                      padding: EdgeInsets.all(8), child: ExerciseTimePanel())
+                  : null,
             ),
             // Toggle handle
             AnimatedBuilder(

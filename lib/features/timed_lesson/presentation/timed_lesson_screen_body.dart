@@ -10,7 +10,7 @@ import 'package:sionnach_ui_community/base/widget/sentence_complete_celebration.
 import 'package:sionnach_ui_community/base/widget/simple_irish_sentence_display.dart';
 
 import '../controller/timed_exercise_controller.dart';
-import 'widget/side_panel.dart';
+import 'widget/panel_widget.dart';
 
 //Internal provider to help manage initial timing state
 // with respect to the screen lifecycle
@@ -101,22 +101,8 @@ class TimedLessonScreenBody extends ConsumerWidget {
 
     return Stack(
       children: [
+        const Positioned.fill(child: PanelWidget()),
         Positioned.fill(child: mainContent),
-        const Positioned(
-          right: 0,
-          top: 0,
-          bottom: 0,
-          child: SizedBox(
-            height: double.infinity,
-            child: IgnorePointer(
-              ignoring: false, // allow interaction with the panel
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
-                child: SidePanel(),
-              ),
-            ),
-          ),
-        ),
       ],
     );
   }

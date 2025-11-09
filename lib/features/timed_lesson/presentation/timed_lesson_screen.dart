@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'timed_lesson_screen_body.dart';
 import '../provider/timed_item_list_provider.dart';
-import 'widget/panel_widget.dart';
+import 'widget/side_panel.dart';
 import '../provider/selection_provider.dart';
 
 class TimedLessonScreen extends ConsumerWidget {
@@ -30,7 +30,6 @@ class TimedLessonScreen extends ConsumerWidget {
         data: (lessonDefinition) {
           return Stack(
             children: [
-              const Positioned.fill(child: PanelWidget()),
               Positioned.fill(
                   child: TimedLessonScreenBody(
                 sentences: lessonDefinition.sentencePairs,
@@ -38,6 +37,22 @@ class TimedLessonScreen extends ConsumerWidget {
                   log("Lesson Complete!");
                 },
               )),
+              const Positioned(
+                right: 0,
+                top: 0,
+                bottom: 0,
+                child: SizedBox(
+                  height: double.infinity,
+                  child: IgnorePointer(
+                    ignoring: false, // allow interaction with the panel
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                      child: SidePanel(),
+                    ),
+                  ),
+                ),
+              ),
             ],
           );
         },

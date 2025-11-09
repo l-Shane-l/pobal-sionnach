@@ -23,15 +23,8 @@ class TimedExerciseController extends _$TimedExerciseController {
 
   void beginTiming() {
     final timer = ref.read(timerControllerProvider.notifier);
-    timer.stopExercise();
     timer.reset();
-    timer.startExercise();
-
-    if (state.currentSentence != null) {
-      // first word lap
-      timer.startLap(
-          id: 'word:0', label: ' ${state.currentSentence.irish.split(" ")[0]}');
-    }
+    timer.startExercise(id: 'word:0', label: ' ...');
   }
 
   void onKeyPressed(String key) {
@@ -57,8 +50,6 @@ class TimedExerciseController extends _$TimedExerciseController {
 
   void onCorrectWordSubmitted() {
     final timer = ref.read(timerControllerProvider.notifier);
-    // Close the current word lap
-    timer.endLap();
 
     final newRevealedWords = List<String>.from(state.revealedIrishWords)
       ..add(state.currentTargetWord);
@@ -67,6 +58,9 @@ class TimedExerciseController extends _$TimedExerciseController {
         state.currentIrishSentence.split(' ').length) {
       // If this was the last sentence, stop the exercise timer
       if (state.isLastSentence) {
+        timer.endLap(
+            labelUpdate:
+                state.currentSentence.irish.split(" ")[state.currentWordIndex]);
         timer.stopExercise();
       }
       // Sentence complete
@@ -83,9 +77,11 @@ class TimedExerciseController extends _$TimedExerciseController {
       // More words in the sentence
       // Start next word lap immediately
       final nextWordIndex = state.currentWordIndex + 1;
-      timer.startLap(
-          id: 'word:$nextWordIndex',
-          label: ' ${state.currentSentence.irish.split(" ")[nextWordIndex]}');
+      timer.lapToNext(
+          nextId: 'word: $nextWordIndex',
+          nextLabel: ' ...',
+          updateLabel:
+              state.currentSentence.irish.split(" ")[state.currentWordIndex]);
 
       state = state.copyWith(
         revealedIrishWords: newRevealedWords,
@@ -104,9 +100,11 @@ class TimedExerciseController extends _$TimedExerciseController {
     final nextIndex = state.currentSentenceIndex + 1;
 
     // Begin timing for next sentence’s first word
-    ref.read(timerControllerProvider.notifier).startLap(
-        id: 'word: $nextIndex',
-        label: ' ${state.sentences[nextIndex].irish.split(" ")[0]}');
+    ref.read(timerControllerProvider.notifier).lapToNext(
+        nextId: 'word: $nextIndex',
+        nextLabel: ' ...',
+        updateLabel: state.sentences[state.currentSentenceIndex].irish
+            .split(" ")[state.currentWordIndex]);
 
     state = TimedExerciseState.initial(
       sentences: state.sentences,
@@ -127,6 +125,15 @@ class TimedExerciseController extends _$TimedExerciseController {
   }
 
   void revealWord() {
+    final nextIndex = state.currentSentenceIndex + 1;
+
+    // Begin timing for next sentence’s first word
+    ref.read(timerControllerProvider.notifier).lapToNext(
+        nextId: 'word: $nextIndex',
+        nextLabel: ' ...',
+        updateLabel: state.sentences[state.currentSentenceIndex].irish
+            .split(" ")[state.currentWordIndex]);
+
     state = state.copyWith(isWordRevealed: true);
   }
 }

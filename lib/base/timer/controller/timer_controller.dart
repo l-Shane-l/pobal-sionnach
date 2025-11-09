@@ -21,7 +21,7 @@ class TimerController extends _$TimerController {
     return TimerState.initial();
   }
 
-  void startExercise() {
+  void startExercise({String? id, String? label}) {
     if (state.running) return;
     _sw = _clock.newStopwatch()..start();
     final started = _clock.nowMs();
@@ -37,6 +37,8 @@ class TimerController extends _$TimerController {
       if (!state.running || _sw == null) return;
       state = state.copyWith(elapsedMs: _sw!.elapsedMilliseconds);
     });
+
+    startLap(id: id ?? '0', label: label ?? 'Start');
   }
 
   void stopExercise() {
@@ -68,18 +70,24 @@ class TimerController extends _$TimerController {
   }
 
   /// Ends the current lap (if any is open).
-  void endLap() {
+  void endLap({String? labelUpdate}) {
     if (!state.running || _sw == null) return;
     final sinceStart = _sw!.elapsedMilliseconds;
     final current = [...state.laps];
     if (current.isNotEmpty && current.last.isOpen) {
-      current[current.length - 1] = current.last.closeAt(sinceStart);
+      current[current.length - 1] = current.last
+          .closeAt(sinceStart)
+          .copyWith(label: labelUpdate ?? current.last.label);
+
       state = state.copyWith(laps: current, elapsedMs: sinceStart);
     }
   }
 
-  void lapToNext({required String nextId, required String nextLabel}) {
-    endLap();
+  void lapToNext(
+      {required String nextId,
+      required String nextLabel,
+      String? updateLabel}) {
+    endLap(labelUpdate: updateLabel);
     startLap(id: nextId, label: nextLabel);
   }
 
