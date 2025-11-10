@@ -31,7 +31,8 @@ class _RootNavBar extends StatelessWidget {
 
   int get _index {
     final loc = state.uri.toString();
-    if (loc.startsWith('/lesson')) return 1;
+    if (loc.startsWith('/lesson/dummy_lesson1')) return 1;
+    if (loc.startsWith('/lesson/dummy_lesson2')) return 2;
     return 0; // /lessons
   }
 
@@ -45,13 +46,17 @@ class _RootNavBar extends StatelessWidget {
             const LessonsListRoute().go(context);
             break;
           case 1:
-            const LessonRoute(id: 'dummy_lesson').go(context);
+            const LessonRoute(id: 'dummy_lesson1').go(context);
+            break;
+          case 2:
+            const LessonRoute(id: 'dummy_lesson2').go(context);
             break;
         }
       },
       destinations: const [
         NavigationDestination(icon: Icon(Icons.menu_book), label: 'Lessons'),
-        NavigationDestination(icon: Icon(Icons.school), label: 'Lesson'),
+        NavigationDestination(icon: Icon(Icons.school), label: 'Lesson 1'),
+        NavigationDestination(icon: Icon(Icons.school), label: 'Lesson 2'),
       ],
     );
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'routes.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen();
@@ -14,17 +14,13 @@ class HomeScreen extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                // /lesson/:id
-                context.pushNamed('lesson',
-                    pathParameters: {'id': 'dummy_lesson'});
+                const LessonRoute(id: 'dummy_lesson1').go(context);
               },
               child: const Text('Open Lesson 1'),
             ),
             ElevatedButton(
               onPressed: () {
-                // /lesson2/:id
-                context.pushNamed('lesson2',
-                    pathParameters: {'id': 'dummy_lesson_2'});
+                const LessonRoute(id: 'dummy_lesson2').go(context);
               },
               child: const Text('Open Lesson 2'),
             ),

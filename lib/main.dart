@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sionnach_ui_community/lesson_screen.dart';
-import 'package:go_router/go_router.dart';
-import 'home_screen.dart';
 import 'app_router.dart';
 
 void main() {
