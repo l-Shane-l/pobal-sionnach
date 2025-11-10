@@ -7,7 +7,7 @@ part of 'interactive_exercise_controller.dart';
 // **************************************************************************
 
 String _$interactiveExerciseControllerHash() =>
-    r'b92584531c9a98293445f8f02093488476b461d3';
+    r'89964ffcc22b0278bf33badd29f3ced23c7ee802';
 
 /// Copied from Dart SDK
 class _SystemHash {
