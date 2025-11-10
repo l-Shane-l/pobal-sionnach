@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,137 +9,85 @@ part of 'interactive_exercise_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$InteractiveExerciseState {
-  List<SentencePair> get sentences => throw _privateConstructorUsedError;
-  int get currentSentenceIndex => throw _privateConstructorUsedError;
-  int get currentWordIndex => throw _privateConstructorUsedError;
-  String get currentUserInput => throw _privateConstructorUsedError;
-  List<String> get revealedIrishWords => throw _privateConstructorUsedError;
-  List<bool> get completedSentences => throw _privateConstructorUsedError;
-  LessonState get lessonState => throw _privateConstructorUsedError;
-  bool get isCurrentWordCorrect => throw _privateConstructorUsedError;
-  bool get isWordRevealed => throw _privateConstructorUsedError;
-  bool get isShiftEnabled => throw _privateConstructorUsedError;
-  bool get isFadaEnabled => throw _privateConstructorUsedError;
+  List<SentencePair> get sentences;
+  int get currentSentenceIndex;
+  int get currentWordIndex;
+  String get currentUserInput;
+  List<String> get revealedIrishWords;
+  List<bool> get completedSentences;
+  LessonState get lessonState;
+  bool get isCurrentWordCorrect;
+  bool get isWordRevealed;
+  bool get isShiftEnabled;
+  bool get isFadaEnabled;
 
   /// Create a copy of InteractiveExerciseState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $InteractiveExerciseStateCopyWith<InteractiveExerciseState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $InteractiveExerciseStateCopyWith<$Res> {
-  factory $InteractiveExerciseStateCopyWith(InteractiveExerciseState value,
-          $Res Function(InteractiveExerciseState) then) =
-      _$InteractiveExerciseStateCopyWithImpl<$Res, InteractiveExerciseState>;
-  @useResult
-  $Res call(
-      {List<SentencePair> sentences,
-      int currentSentenceIndex,
-      int currentWordIndex,
-      String currentUserInput,
-      List<String> revealedIrishWords,
-      List<bool> completedSentences,
-      LessonState lessonState,
-      bool isCurrentWordCorrect,
-      bool isWordRevealed,
-      bool isShiftEnabled,
-      bool isFadaEnabled});
-}
-
-/// @nodoc
-class _$InteractiveExerciseStateCopyWithImpl<$Res,
-        $Val extends InteractiveExerciseState>
-    implements $InteractiveExerciseStateCopyWith<$Res> {
-  _$InteractiveExerciseStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of InteractiveExerciseState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $InteractiveExerciseStateCopyWith<InteractiveExerciseState> get copyWith =>
+      _$InteractiveExerciseStateCopyWithImpl<InteractiveExerciseState>(
+          this as InteractiveExerciseState, _$identity);
+
   @override
-  $Res call({
-    Object? sentences = null,
-    Object? currentSentenceIndex = null,
-    Object? currentWordIndex = null,
-    Object? currentUserInput = null,
-    Object? revealedIrishWords = null,
-    Object? completedSentences = null,
-    Object? lessonState = null,
-    Object? isCurrentWordCorrect = null,
-    Object? isWordRevealed = null,
-    Object? isShiftEnabled = null,
-    Object? isFadaEnabled = null,
-  }) {
-    return _then(_value.copyWith(
-      sentences: null == sentences
-          ? _value.sentences
-          : sentences // ignore: cast_nullable_to_non_nullable
-              as List<SentencePair>,
-      currentSentenceIndex: null == currentSentenceIndex
-          ? _value.currentSentenceIndex
-          : currentSentenceIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      currentWordIndex: null == currentWordIndex
-          ? _value.currentWordIndex
-          : currentWordIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      currentUserInput: null == currentUserInput
-          ? _value.currentUserInput
-          : currentUserInput // ignore: cast_nullable_to_non_nullable
-              as String,
-      revealedIrishWords: null == revealedIrishWords
-          ? _value.revealedIrishWords
-          : revealedIrishWords // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      completedSentences: null == completedSentences
-          ? _value.completedSentences
-          : completedSentences // ignore: cast_nullable_to_non_nullable
-              as List<bool>,
-      lessonState: null == lessonState
-          ? _value.lessonState
-          : lessonState // ignore: cast_nullable_to_non_nullable
-              as LessonState,
-      isCurrentWordCorrect: null == isCurrentWordCorrect
-          ? _value.isCurrentWordCorrect
-          : isCurrentWordCorrect // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isWordRevealed: null == isWordRevealed
-          ? _value.isWordRevealed
-          : isWordRevealed // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isShiftEnabled: null == isShiftEnabled
-          ? _value.isShiftEnabled
-          : isShiftEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isFadaEnabled: null == isFadaEnabled
-          ? _value.isFadaEnabled
-          : isFadaEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is InteractiveExerciseState &&
+            const DeepCollectionEquality().equals(other.sentences, sentences) &&
+            (identical(other.currentSentenceIndex, currentSentenceIndex) ||
+                other.currentSentenceIndex == currentSentenceIndex) &&
+            (identical(other.currentWordIndex, currentWordIndex) ||
+                other.currentWordIndex == currentWordIndex) &&
+            (identical(other.currentUserInput, currentUserInput) ||
+                other.currentUserInput == currentUserInput) &&
+            const DeepCollectionEquality()
+                .equals(other.revealedIrishWords, revealedIrishWords) &&
+            const DeepCollectionEquality()
+                .equals(other.completedSentences, completedSentences) &&
+            (identical(other.lessonState, lessonState) ||
+                other.lessonState == lessonState) &&
+            (identical(other.isCurrentWordCorrect, isCurrentWordCorrect) ||
+                other.isCurrentWordCorrect == isCurrentWordCorrect) &&
+            (identical(other.isWordRevealed, isWordRevealed) ||
+                other.isWordRevealed == isWordRevealed) &&
+            (identical(other.isShiftEnabled, isShiftEnabled) ||
+                other.isShiftEnabled == isShiftEnabled) &&
+            (identical(other.isFadaEnabled, isFadaEnabled) ||
+                other.isFadaEnabled == isFadaEnabled));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(sentences),
+      currentSentenceIndex,
+      currentWordIndex,
+      currentUserInput,
+      const DeepCollectionEquality().hash(revealedIrishWords),
+      const DeepCollectionEquality().hash(completedSentences),
+      lessonState,
+      isCurrentWordCorrect,
+      isWordRevealed,
+      isShiftEnabled,
+      isFadaEnabled);
+
+  @override
+  String toString() {
+    return 'InteractiveExerciseState(sentences: $sentences, currentSentenceIndex: $currentSentenceIndex, currentWordIndex: $currentWordIndex, currentUserInput: $currentUserInput, revealedIrishWords: $revealedIrishWords, completedSentences: $completedSentences, lessonState: $lessonState, isCurrentWordCorrect: $isCurrentWordCorrect, isWordRevealed: $isWordRevealed, isShiftEnabled: $isShiftEnabled, isFadaEnabled: $isFadaEnabled)';
   }
 }
 
 /// @nodoc
-abstract class _$$InteractiveExerciseStateImplCopyWith<$Res>
-    implements $InteractiveExerciseStateCopyWith<$Res> {
-  factory _$$InteractiveExerciseStateImplCopyWith(
-          _$InteractiveExerciseStateImpl value,
-          $Res Function(_$InteractiveExerciseStateImpl) then) =
-      __$$InteractiveExerciseStateImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $InteractiveExerciseStateCopyWith<$Res> {
+  factory $InteractiveExerciseStateCopyWith(InteractiveExerciseState value,
+          $Res Function(InteractiveExerciseState) _then) =
+      _$InteractiveExerciseStateCopyWithImpl;
   @useResult
   $Res call(
       {List<SentencePair> sentences,
@@ -156,14 +104,12 @@ abstract class _$$InteractiveExerciseStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$InteractiveExerciseStateImplCopyWithImpl<$Res>
-    extends _$InteractiveExerciseStateCopyWithImpl<$Res,
-        _$InteractiveExerciseStateImpl>
-    implements _$$InteractiveExerciseStateImplCopyWith<$Res> {
-  __$$InteractiveExerciseStateImplCopyWithImpl(
-      _$InteractiveExerciseStateImpl _value,
-      $Res Function(_$InteractiveExerciseStateImpl) _then)
-      : super(_value, _then);
+class _$InteractiveExerciseStateCopyWithImpl<$Res>
+    implements $InteractiveExerciseStateCopyWith<$Res> {
+  _$InteractiveExerciseStateCopyWithImpl(this._self, this._then);
+
+  final InteractiveExerciseState _self;
+  final $Res Function(InteractiveExerciseState) _then;
 
   /// Create a copy of InteractiveExerciseState
   /// with the given fields replaced by the non-null parameter values.
@@ -182,59 +128,285 @@ class __$$InteractiveExerciseStateImplCopyWithImpl<$Res>
     Object? isShiftEnabled = null,
     Object? isFadaEnabled = null,
   }) {
-    return _then(_$InteractiveExerciseStateImpl(
+    return _then(_self.copyWith(
       sentences: null == sentences
-          ? _value._sentences
+          ? _self.sentences
           : sentences // ignore: cast_nullable_to_non_nullable
               as List<SentencePair>,
       currentSentenceIndex: null == currentSentenceIndex
-          ? _value.currentSentenceIndex
+          ? _self.currentSentenceIndex
           : currentSentenceIndex // ignore: cast_nullable_to_non_nullable
               as int,
       currentWordIndex: null == currentWordIndex
-          ? _value.currentWordIndex
+          ? _self.currentWordIndex
           : currentWordIndex // ignore: cast_nullable_to_non_nullable
               as int,
       currentUserInput: null == currentUserInput
-          ? _value.currentUserInput
+          ? _self.currentUserInput
           : currentUserInput // ignore: cast_nullable_to_non_nullable
               as String,
       revealedIrishWords: null == revealedIrishWords
-          ? _value._revealedIrishWords
+          ? _self.revealedIrishWords
           : revealedIrishWords // ignore: cast_nullable_to_non_nullable
               as List<String>,
       completedSentences: null == completedSentences
-          ? _value._completedSentences
+          ? _self.completedSentences
           : completedSentences // ignore: cast_nullable_to_non_nullable
               as List<bool>,
       lessonState: null == lessonState
-          ? _value.lessonState
+          ? _self.lessonState
           : lessonState // ignore: cast_nullable_to_non_nullable
               as LessonState,
       isCurrentWordCorrect: null == isCurrentWordCorrect
-          ? _value.isCurrentWordCorrect
+          ? _self.isCurrentWordCorrect
           : isCurrentWordCorrect // ignore: cast_nullable_to_non_nullable
               as bool,
       isWordRevealed: null == isWordRevealed
-          ? _value.isWordRevealed
+          ? _self.isWordRevealed
           : isWordRevealed // ignore: cast_nullable_to_non_nullable
               as bool,
       isShiftEnabled: null == isShiftEnabled
-          ? _value.isShiftEnabled
+          ? _self.isShiftEnabled
           : isShiftEnabled // ignore: cast_nullable_to_non_nullable
               as bool,
       isFadaEnabled: null == isFadaEnabled
-          ? _value.isFadaEnabled
+          ? _self.isFadaEnabled
           : isFadaEnabled // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [InteractiveExerciseState].
+extension InteractiveExerciseStatePatterns on InteractiveExerciseState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_InteractiveExerciseState value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _InteractiveExerciseState() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_InteractiveExerciseState value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _InteractiveExerciseState():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_InteractiveExerciseState value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _InteractiveExerciseState() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            List<SentencePair> sentences,
+            int currentSentenceIndex,
+            int currentWordIndex,
+            String currentUserInput,
+            List<String> revealedIrishWords,
+            List<bool> completedSentences,
+            LessonState lessonState,
+            bool isCurrentWordCorrect,
+            bool isWordRevealed,
+            bool isShiftEnabled,
+            bool isFadaEnabled)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _InteractiveExerciseState() when $default != null:
+        return $default(
+            _that.sentences,
+            _that.currentSentenceIndex,
+            _that.currentWordIndex,
+            _that.currentUserInput,
+            _that.revealedIrishWords,
+            _that.completedSentences,
+            _that.lessonState,
+            _that.isCurrentWordCorrect,
+            _that.isWordRevealed,
+            _that.isShiftEnabled,
+            _that.isFadaEnabled);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            List<SentencePair> sentences,
+            int currentSentenceIndex,
+            int currentWordIndex,
+            String currentUserInput,
+            List<String> revealedIrishWords,
+            List<bool> completedSentences,
+            LessonState lessonState,
+            bool isCurrentWordCorrect,
+            bool isWordRevealed,
+            bool isShiftEnabled,
+            bool isFadaEnabled)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _InteractiveExerciseState():
+        return $default(
+            _that.sentences,
+            _that.currentSentenceIndex,
+            _that.currentWordIndex,
+            _that.currentUserInput,
+            _that.revealedIrishWords,
+            _that.completedSentences,
+            _that.lessonState,
+            _that.isCurrentWordCorrect,
+            _that.isWordRevealed,
+            _that.isShiftEnabled,
+            _that.isFadaEnabled);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            List<SentencePair> sentences,
+            int currentSentenceIndex,
+            int currentWordIndex,
+            String currentUserInput,
+            List<String> revealedIrishWords,
+            List<bool> completedSentences,
+            LessonState lessonState,
+            bool isCurrentWordCorrect,
+            bool isWordRevealed,
+            bool isShiftEnabled,
+            bool isFadaEnabled)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _InteractiveExerciseState() when $default != null:
+        return $default(
+            _that.sentences,
+            _that.currentSentenceIndex,
+            _that.currentWordIndex,
+            _that.currentUserInput,
+            _that.revealedIrishWords,
+            _that.completedSentences,
+            _that.lessonState,
+            _that.isCurrentWordCorrect,
+            _that.isWordRevealed,
+            _that.isShiftEnabled,
+            _that.isFadaEnabled);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 
-class _$InteractiveExerciseStateImpl extends _InteractiveExerciseState {
-  const _$InteractiveExerciseStateImpl(
+class _InteractiveExerciseState extends InteractiveExerciseState {
+  const _InteractiveExerciseState(
       {required final List<SentencePair> sentences,
       required this.currentSentenceIndex,
       required this.currentWordIndex,
@@ -294,16 +466,20 @@ class _$InteractiveExerciseStateImpl extends _InteractiveExerciseState {
   @override
   final bool isFadaEnabled;
 
+  /// Create a copy of InteractiveExerciseState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'InteractiveExerciseState(sentences: $sentences, currentSentenceIndex: $currentSentenceIndex, currentWordIndex: $currentWordIndex, currentUserInput: $currentUserInput, revealedIrishWords: $revealedIrishWords, completedSentences: $completedSentences, lessonState: $lessonState, isCurrentWordCorrect: $isCurrentWordCorrect, isWordRevealed: $isWordRevealed, isShiftEnabled: $isShiftEnabled, isFadaEnabled: $isFadaEnabled)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$InteractiveExerciseStateCopyWith<_InteractiveExerciseState> get copyWith =>
+      __$InteractiveExerciseStateCopyWithImpl<_InteractiveExerciseState>(
+          this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InteractiveExerciseStateImpl &&
+            other is _InteractiveExerciseState &&
             const DeepCollectionEquality()
                 .equals(other._sentences, _sentences) &&
             (identical(other.currentSentenceIndex, currentSentenceIndex) ||
@@ -343,58 +519,106 @@ class _$InteractiveExerciseStateImpl extends _InteractiveExerciseState {
       isShiftEnabled,
       isFadaEnabled);
 
+  @override
+  String toString() {
+    return 'InteractiveExerciseState(sentences: $sentences, currentSentenceIndex: $currentSentenceIndex, currentWordIndex: $currentWordIndex, currentUserInput: $currentUserInput, revealedIrishWords: $revealedIrishWords, completedSentences: $completedSentences, lessonState: $lessonState, isCurrentWordCorrect: $isCurrentWordCorrect, isWordRevealed: $isWordRevealed, isShiftEnabled: $isShiftEnabled, isFadaEnabled: $isFadaEnabled)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$InteractiveExerciseStateCopyWith<$Res>
+    implements $InteractiveExerciseStateCopyWith<$Res> {
+  factory _$InteractiveExerciseStateCopyWith(_InteractiveExerciseState value,
+          $Res Function(_InteractiveExerciseState) _then) =
+      __$InteractiveExerciseStateCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {List<SentencePair> sentences,
+      int currentSentenceIndex,
+      int currentWordIndex,
+      String currentUserInput,
+      List<String> revealedIrishWords,
+      List<bool> completedSentences,
+      LessonState lessonState,
+      bool isCurrentWordCorrect,
+      bool isWordRevealed,
+      bool isShiftEnabled,
+      bool isFadaEnabled});
+}
+
+/// @nodoc
+class __$InteractiveExerciseStateCopyWithImpl<$Res>
+    implements _$InteractiveExerciseStateCopyWith<$Res> {
+  __$InteractiveExerciseStateCopyWithImpl(this._self, this._then);
+
+  final _InteractiveExerciseState _self;
+  final $Res Function(_InteractiveExerciseState) _then;
+
   /// Create a copy of InteractiveExerciseState
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$InteractiveExerciseStateImplCopyWith<_$InteractiveExerciseStateImpl>
-      get copyWith => __$$InteractiveExerciseStateImplCopyWithImpl<
-          _$InteractiveExerciseStateImpl>(this, _$identity);
+  $Res call({
+    Object? sentences = null,
+    Object? currentSentenceIndex = null,
+    Object? currentWordIndex = null,
+    Object? currentUserInput = null,
+    Object? revealedIrishWords = null,
+    Object? completedSentences = null,
+    Object? lessonState = null,
+    Object? isCurrentWordCorrect = null,
+    Object? isWordRevealed = null,
+    Object? isShiftEnabled = null,
+    Object? isFadaEnabled = null,
+  }) {
+    return _then(_InteractiveExerciseState(
+      sentences: null == sentences
+          ? _self._sentences
+          : sentences // ignore: cast_nullable_to_non_nullable
+              as List<SentencePair>,
+      currentSentenceIndex: null == currentSentenceIndex
+          ? _self.currentSentenceIndex
+          : currentSentenceIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      currentWordIndex: null == currentWordIndex
+          ? _self.currentWordIndex
+          : currentWordIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      currentUserInput: null == currentUserInput
+          ? _self.currentUserInput
+          : currentUserInput // ignore: cast_nullable_to_non_nullable
+              as String,
+      revealedIrishWords: null == revealedIrishWords
+          ? _self._revealedIrishWords
+          : revealedIrishWords // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      completedSentences: null == completedSentences
+          ? _self._completedSentences
+          : completedSentences // ignore: cast_nullable_to_non_nullable
+              as List<bool>,
+      lessonState: null == lessonState
+          ? _self.lessonState
+          : lessonState // ignore: cast_nullable_to_non_nullable
+              as LessonState,
+      isCurrentWordCorrect: null == isCurrentWordCorrect
+          ? _self.isCurrentWordCorrect
+          : isCurrentWordCorrect // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isWordRevealed: null == isWordRevealed
+          ? _self.isWordRevealed
+          : isWordRevealed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isShiftEnabled: null == isShiftEnabled
+          ? _self.isShiftEnabled
+          : isShiftEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isFadaEnabled: null == isFadaEnabled
+          ? _self.isFadaEnabled
+          : isFadaEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
-abstract class _InteractiveExerciseState extends InteractiveExerciseState {
-  const factory _InteractiveExerciseState(
-      {required final List<SentencePair> sentences,
-      required final int currentSentenceIndex,
-      required final int currentWordIndex,
-      required final String currentUserInput,
-      required final List<String> revealedIrishWords,
-      required final List<bool> completedSentences,
-      required final LessonState lessonState,
-      required final bool isCurrentWordCorrect,
-      required final bool isWordRevealed,
-      required final bool isShiftEnabled,
-      required final bool isFadaEnabled}) = _$InteractiveExerciseStateImpl;
-  const _InteractiveExerciseState._() : super._();
-
-  @override
-  List<SentencePair> get sentences;
-  @override
-  int get currentSentenceIndex;
-  @override
-  int get currentWordIndex;
-  @override
-  String get currentUserInput;
-  @override
-  List<String> get revealedIrishWords;
-  @override
-  List<bool> get completedSentences;
-  @override
-  LessonState get lessonState;
-  @override
-  bool get isCurrentWordCorrect;
-  @override
-  bool get isWordRevealed;
-  @override
-  bool get isShiftEnabled;
-  @override
-  bool get isFadaEnabled;
-
-  /// Create a copy of InteractiveExerciseState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InteractiveExerciseStateImplCopyWith<_$InteractiveExerciseStateImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+// dart format on
