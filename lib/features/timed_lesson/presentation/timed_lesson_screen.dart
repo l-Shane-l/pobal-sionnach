@@ -3,9 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'timed_lesson_screen_body.dart';
-import '../provider/timed_item_list_provider.dart';
-import 'widget/side_panel.dart';
-import '../provider/selection_provider.dart';
+import '../../lesson/provider/lesson_definition_provider/lesson_definition_provider.dart';
 
 class TimedLessonScreen extends ConsumerWidget {
   final String plantedTreeId;
@@ -13,10 +11,8 @@ class TimedLessonScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    //UI Based Selection state
-    final String? selection = ref.watch(selectionProvider);
     final lessonDefinitionAsync =
-        ref.watch(timedItemListProvider(selection ?? plantedTreeId));
+        ref.watch(lessonDefinitionProvider(plantedTreeId));
 
     return Scaffold(
       appBar: AppBar(
@@ -37,22 +33,6 @@ class TimedLessonScreen extends ConsumerWidget {
                   log("Lesson Complete!");
                 },
               )),
-              const Positioned(
-                right: 0,
-                top: 0,
-                bottom: 0,
-                child: SizedBox(
-                  height: double.infinity,
-                  child: IgnorePointer(
-                    ignoring: false, // allow scroll interaction with the panel
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
-                      child: SidePanel(),
-                    ),
-                  ),
-                ),
-              ),
             ],
           );
         },
