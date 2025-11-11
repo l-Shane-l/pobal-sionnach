@@ -9,7 +9,7 @@ enum NetQuality { online, poor, offline, invalid }
 /// Includes convenience getters [isOnline] [isOffline] and [valid]
 
 @freezed
-class ConnectivityState with _$ConnectivityState {
+abstract class ConnectivityState with _$ConnectivityState {
   const ConnectivityState._();
 
   const factory ConnectivityState({

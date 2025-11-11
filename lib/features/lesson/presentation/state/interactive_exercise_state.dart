@@ -6,7 +6,7 @@ part 'interactive_exercise_state.freezed.dart';
 enum LessonState { playing, completed, finished }
 
 @freezed
-class InteractiveExerciseState with _$InteractiveExerciseState {
+abstract class InteractiveExerciseState with _$InteractiveExerciseState {
   const InteractiveExerciseState._();
 
   const factory InteractiveExerciseState({

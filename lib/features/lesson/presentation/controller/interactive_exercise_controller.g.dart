@@ -6,178 +6,110 @@ part of 'interactive_exercise_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$interactiveExerciseControllerHash() =>
-    r'b92584531c9a98293445f8f02093488476b461d3';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$InteractiveExerciseController
-    extends BuildlessAutoDisposeNotifier<InteractiveExerciseState> {
-  late final List<SentencePair> sentences;
-
-  InteractiveExerciseState build(
-    List<SentencePair> sentences,
-  );
-}
-
-/// See also [InteractiveExerciseController].
 @ProviderFor(InteractiveExerciseController)
 const interactiveExerciseControllerProvider =
-    InteractiveExerciseControllerFamily();
+    InteractiveExerciseControllerFamily._();
 
-/// See also [InteractiveExerciseController].
-class InteractiveExerciseControllerFamily
-    extends Family<InteractiveExerciseState> {
-  /// See also [InteractiveExerciseController].
-  const InteractiveExerciseControllerFamily();
-
-  /// See also [InteractiveExerciseController].
-  InteractiveExerciseControllerProvider call(
-    List<SentencePair> sentences,
-  ) {
-    return InteractiveExerciseControllerProvider(
-      sentences,
-    );
-  }
-
-  @override
-  InteractiveExerciseControllerProvider getProviderOverride(
-    covariant InteractiveExerciseControllerProvider provider,
-  ) {
-    return call(
-      provider.sentences,
-    );
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'interactiveExerciseControllerProvider';
-}
-
-/// See also [InteractiveExerciseController].
-class InteractiveExerciseControllerProvider
-    extends AutoDisposeNotifierProviderImpl<InteractiveExerciseController,
-        InteractiveExerciseState> {
-  /// See also [InteractiveExerciseController].
-  InteractiveExerciseControllerProvider(
-    List<SentencePair> sentences,
-  ) : this._internal(
-          () => InteractiveExerciseController()..sentences = sentences,
-          from: interactiveExerciseControllerProvider,
+final class InteractiveExerciseControllerProvider extends $NotifierProvider<
+    InteractiveExerciseController, InteractiveExerciseState> {
+  const InteractiveExerciseControllerProvider._(
+      {required InteractiveExerciseControllerFamily super.from,
+      required List<SentencePair> super.argument})
+      : super(
+          retry: null,
           name: r'interactiveExerciseControllerProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$interactiveExerciseControllerHash,
-          dependencies: InteractiveExerciseControllerFamily._dependencies,
-          allTransitiveDependencies:
-              InteractiveExerciseControllerFamily._allTransitiveDependencies,
-          sentences: sentences,
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
         );
 
-  InteractiveExerciseControllerProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.sentences,
-  }) : super.internal();
-
-  final List<SentencePair> sentences;
+  @override
+  String debugGetCreateSourceHash() => _$interactiveExerciseControllerHash();
 
   @override
-  InteractiveExerciseState runNotifierBuild(
-    covariant InteractiveExerciseController notifier,
-  ) {
-    return notifier.build(
-      sentences,
-    );
+  String toString() {
+    return r'interactiveExerciseControllerProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  Override overrideWith(InteractiveExerciseController Function() create) {
-    return ProviderOverride(
+  InteractiveExerciseController create() => InteractiveExerciseController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(InteractiveExerciseState value) {
+    return $ProviderOverride(
       origin: this,
-      override: InteractiveExerciseControllerProvider._internal(
-        () => create()..sentences = sentences,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        sentences: sentences,
-      ),
+      providerOverride: $SyncValueProvider<InteractiveExerciseState>(value),
     );
-  }
-
-  @override
-  AutoDisposeNotifierProviderElement<InteractiveExerciseController,
-      InteractiveExerciseState> createElement() {
-    return _InteractiveExerciseControllerProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
     return other is InteractiveExerciseControllerProvider &&
-        other.sentences == sentences;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, sentences.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin InteractiveExerciseControllerRef
-    on AutoDisposeNotifierProviderRef<InteractiveExerciseState> {
-  /// The parameter `sentences` of this provider.
-  List<SentencePair> get sentences;
-}
+String _$interactiveExerciseControllerHash() =>
+    r'b92584531c9a98293445f8f02093488476b461d3';
 
-class _InteractiveExerciseControllerProviderElement
-    extends AutoDisposeNotifierProviderElement<InteractiveExerciseController,
-        InteractiveExerciseState> with InteractiveExerciseControllerRef {
-  _InteractiveExerciseControllerProviderElement(super.provider);
+final class InteractiveExerciseControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
+            InteractiveExerciseController,
+            InteractiveExerciseState,
+            InteractiveExerciseState,
+            InteractiveExerciseState,
+            List<SentencePair>> {
+  const InteractiveExerciseControllerFamily._()
+      : super(
+          retry: null,
+          name: r'interactiveExerciseControllerProvider',
+          dependencies: null,
+          $allTransitiveDependencies: null,
+          isAutoDispose: true,
+        );
+
+  InteractiveExerciseControllerProvider call(
+    List<SentencePair> sentences,
+  ) =>
+      InteractiveExerciseControllerProvider._(argument: sentences, from: this);
 
   @override
-  List<SentencePair> get sentences =>
-      (origin as InteractiveExerciseControllerProvider).sentences;
+  String toString() => r'interactiveExerciseControllerProvider';
 }
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+
+abstract class _$InteractiveExerciseController
+    extends $Notifier<InteractiveExerciseState> {
+  late final _$args = ref.$arg as List<SentencePair>;
+  List<SentencePair> get sentences => _$args;
+
+  InteractiveExerciseState build(
+    List<SentencePair> sentences,
+  );
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(
+      _$args,
+    );
+    final ref =
+        this.ref as $Ref<InteractiveExerciseState, InteractiveExerciseState>;
+    final element = ref.element as $ClassProviderElement<
+        AnyNotifier<InteractiveExerciseState, InteractiveExerciseState>,
+        InteractiveExerciseState,
+        Object?,
+        Object?>;
+    element.handleValue(ref, created);
+  }
+}

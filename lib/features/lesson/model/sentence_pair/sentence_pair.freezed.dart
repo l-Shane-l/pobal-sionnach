@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,135 +9,30 @@ part of 'sentence_pair.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-SentencePair _$SentencePairFromJson(Map<String, dynamic> json) {
-  return _SentencePair.fromJson(json);
-}
 
 /// @nodoc
 mixin _$SentencePair {
-  String get english => throw _privateConstructorUsedError;
-  String get irish => throw _privateConstructorUsedError;
-
-  /// Serializes this SentencePair to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get english;
+  String get irish;
 
   /// Create a copy of SentencePair
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $SentencePairCopyWith<SentencePair> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$SentencePairCopyWithImpl<SentencePair>(
+          this as SentencePair, _$identity);
 
-/// @nodoc
-abstract class $SentencePairCopyWith<$Res> {
-  factory $SentencePairCopyWith(
-          SentencePair value, $Res Function(SentencePair) then) =
-      _$SentencePairCopyWithImpl<$Res, SentencePair>;
-  @useResult
-  $Res call({String english, String irish});
-}
-
-/// @nodoc
-class _$SentencePairCopyWithImpl<$Res, $Val extends SentencePair>
-    implements $SentencePairCopyWith<$Res> {
-  _$SentencePairCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of SentencePair
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? english = null,
-    Object? irish = null,
-  }) {
-    return _then(_value.copyWith(
-      english: null == english
-          ? _value.english
-          : english // ignore: cast_nullable_to_non_nullable
-              as String,
-      irish: null == irish
-          ? _value.irish
-          : irish // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$SentencePairImplCopyWith<$Res>
-    implements $SentencePairCopyWith<$Res> {
-  factory _$$SentencePairImplCopyWith(
-          _$SentencePairImpl value, $Res Function(_$SentencePairImpl) then) =
-      __$$SentencePairImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String english, String irish});
-}
-
-/// @nodoc
-class __$$SentencePairImplCopyWithImpl<$Res>
-    extends _$SentencePairCopyWithImpl<$Res, _$SentencePairImpl>
-    implements _$$SentencePairImplCopyWith<$Res> {
-  __$$SentencePairImplCopyWithImpl(
-      _$SentencePairImpl _value, $Res Function(_$SentencePairImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of SentencePair
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? english = null,
-    Object? irish = null,
-  }) {
-    return _then(_$SentencePairImpl(
-      english: null == english
-          ? _value.english
-          : english // ignore: cast_nullable_to_non_nullable
-              as String,
-      irish: null == irish
-          ? _value.irish
-          : irish // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$SentencePairImpl extends _SentencePair {
-  const _$SentencePairImpl({this.english = '', this.irish = ''}) : super._();
-
-  factory _$SentencePairImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SentencePairImplFromJson(json);
-
-  @override
-  @JsonKey()
-  final String english;
-  @override
-  @JsonKey()
-  final String irish;
-
-  @override
-  String toString() {
-    return 'SentencePair(english: $english, irish: $irish)';
-  }
+  /// Serializes this SentencePair to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SentencePairImpl &&
+            other is SentencePair &&
             (identical(other.english, english) || other.english == english) &&
             (identical(other.irish, irish) || other.irish == irish));
   }
@@ -146,39 +41,292 @@ class _$SentencePairImpl extends _SentencePair {
   @override
   int get hashCode => Object.hash(runtimeType, english, irish);
 
-  /// Create a copy of SentencePair
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SentencePairImplCopyWith<_$SentencePairImpl> get copyWith =>
-      __$$SentencePairImplCopyWithImpl<_$SentencePairImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SentencePairImplToJson(
-      this,
-    );
+  String toString() {
+    return 'SentencePair(english: $english, irish: $irish)';
   }
 }
 
-abstract class _SentencePair extends SentencePair {
-  const factory _SentencePair({final String english, final String irish}) =
-      _$SentencePairImpl;
-  const _SentencePair._() : super._();
+/// @nodoc
+abstract mixin class $SentencePairCopyWith<$Res> {
+  factory $SentencePairCopyWith(
+          SentencePair value, $Res Function(SentencePair) _then) =
+      _$SentencePairCopyWithImpl;
+  @useResult
+  $Res call({String english, String irish});
+}
 
-  factory _SentencePair.fromJson(Map<String, dynamic> json) =
-      _$SentencePairImpl.fromJson;
+/// @nodoc
+class _$SentencePairCopyWithImpl<$Res> implements $SentencePairCopyWith<$Res> {
+  _$SentencePairCopyWithImpl(this._self, this._then);
+
+  final SentencePair _self;
+  final $Res Function(SentencePair) _then;
+
+  /// Create a copy of SentencePair
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? english = null,
+    Object? irish = null,
+  }) {
+    return _then(_self.copyWith(
+      english: null == english
+          ? _self.english
+          : english // ignore: cast_nullable_to_non_nullable
+              as String,
+      irish: null == irish
+          ? _self.irish
+          : irish // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [SentencePair].
+extension SentencePairPatterns on SentencePair {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_SentencePair value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SentencePair() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_SentencePair value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SentencePair():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_SentencePair value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SentencePair() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String english, String irish)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SentencePair() when $default != null:
+        return $default(_that.english, _that.irish);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String english, String irish) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SentencePair():
+        return $default(_that.english, _that.irish);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String english, String irish)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SentencePair() when $default != null:
+        return $default(_that.english, _that.irish);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _SentencePair extends SentencePair {
+  const _SentencePair({this.english = '', this.irish = ''}) : super._();
+  factory _SentencePair.fromJson(Map<String, dynamic> json) =>
+      _$SentencePairFromJson(json);
 
   @override
-  String get english;
+  @JsonKey()
+  final String english;
   @override
-  String get irish;
+  @JsonKey()
+  final String irish;
 
   /// Create a copy of SentencePair
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SentencePairImplCopyWith<_$SentencePairImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$SentencePairCopyWith<_SentencePair> get copyWith =>
+      __$SentencePairCopyWithImpl<_SentencePair>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SentencePairToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _SentencePair &&
+            (identical(other.english, english) || other.english == english) &&
+            (identical(other.irish, irish) || other.irish == irish));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, english, irish);
+
+  @override
+  String toString() {
+    return 'SentencePair(english: $english, irish: $irish)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$SentencePairCopyWith<$Res>
+    implements $SentencePairCopyWith<$Res> {
+  factory _$SentencePairCopyWith(
+          _SentencePair value, $Res Function(_SentencePair) _then) =
+      __$SentencePairCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String english, String irish});
+}
+
+/// @nodoc
+class __$SentencePairCopyWithImpl<$Res>
+    implements _$SentencePairCopyWith<$Res> {
+  __$SentencePairCopyWithImpl(this._self, this._then);
+
+  final _SentencePair _self;
+  final $Res Function(_SentencePair) _then;
+
+  /// Create a copy of SentencePair
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? english = null,
+    Object? irish = null,
+  }) {
+    return _then(_SentencePair(
+      english: null == english
+          ? _self.english
+          : english // ignore: cast_nullable_to_non_nullable
+              as String,
+      irish: null == irish
+          ? _self.irish
+          : irish // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+// dart format on
