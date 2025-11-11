@@ -7,6 +7,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key('lesson_list_scaffold'),
       appBar: AppBar(title: const Text('Home')),
       body: Center(
         child: Wrap(

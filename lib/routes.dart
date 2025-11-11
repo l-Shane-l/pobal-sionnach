@@ -78,7 +78,10 @@ class LessonRoute extends GoRouteData with $LessonRoute {
   final String id;
 
   @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return LessonScreen(plantedTreeId: id);
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return MaterialPage<void>(
+      key: const ValueKey('lesson_page'),
+      child: LessonScreen(plantedTreeId: id),
+    );
   }
 }
