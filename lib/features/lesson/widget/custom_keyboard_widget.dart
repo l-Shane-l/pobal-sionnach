@@ -10,6 +10,7 @@ final fadaModeProvider = StateProvider<bool>((ref) => false);
 final specialCharsModeProvider = StateProvider<bool>((ref) => false);
 final pressedKeysProvider = StateProvider<Set<String>>((ref) => {});
 final altHeldProvider = StateProvider<bool>((ref) => false);
+final gaeilgeModeProvider = StateProvider<bool>((ref) => false);
 
 // Key types
 enum KeyType { letter, modifier, action, space, special }
@@ -61,19 +62,6 @@ class _CustomKeyboardWidgetState extends ConsumerState<CustomKeyboardWidget>
     with TickerProviderStateMixin {
   late AnimationController _bounceController;
   late Animation<double> _bounceAnimation;
-
-  final fadaMap = {
-    'a': 'á',
-    'A': 'Á',
-    'e': 'é',
-    'E': 'É',
-    'i': 'í',
-    'I': 'Í',
-    'o': 'ó',
-    'O': 'Ó',
-    'u': 'ú',
-    'U': 'Ú',
-  };
 
   @override
   void initState() {
@@ -327,6 +315,7 @@ class _TypewriterKeyboard extends ConsumerWidget {
     final isShiftEnabled = ref.watch(shiftStateProvider);
     final isFadaMode = ref.watch(fadaModeProvider);
     final isAltHeld = ref.watch(altHeldProvider);
+    final isGaeilgeMode = ref.watch(gaeilgeModeProvider);
     final screenWidth = MediaQuery.of(context).size.width;
     final isDesktop = screenWidth > 900;
 
@@ -341,6 +330,23 @@ class _TypewriterKeyboard extends ConsumerWidget {
       'O': 'Ó',
       'u': 'ú',
       'U': 'Ú',
+    };
+
+    final Map<String, String> gaeilgeSubMapLower = {
+      'k': 'c',
+      'q': 'cu',
+      'v': 'bh',
+      'w': 'bhf',
+      'x': 'ch',
+      'y': 'i',
+      'z': 's',
+      'K': 'C',
+      'Q': 'Cu',
+      'V': 'Bh',
+      'W': 'Bhf',
+      'X': 'Ch',
+      'Y': 'I',
+      'Z': 'S',
     };
 
     final rows = [
@@ -377,9 +383,13 @@ class _TypewriterKeyboard extends ConsumerWidget {
                   ...rows[i].map((letter) {
                     final char = isShiftEnabled ? letter.toUpperCase() : letter;
                     final hasFada = fadaMap.containsKey(char);
-                    final displayChar = ((isFadaMode || isAltHeld) && hasFada)
+                    final asGaeilge = gaeilgeSubMapLower.containsKey(char);
+                    final displayCharA = ((isFadaMode || isAltHeld) && hasFada)
                         ? fadaMap[char]!
                         : char;
+                    final displayChar = isGaeilgeMode
+                        ? (gaeilgeSubMapLower[char] ?? displayCharA)
+                        : displayCharA;
 
                     return _KeyboardKey(
                       display: displayChar,
@@ -387,6 +397,7 @@ class _TypewriterKeyboard extends ConsumerWidget {
                       keyIdentifier: letter,
                       type: KeyType.letter,
                       hasFada: hasFada && (isFadaMode || isAltHeld),
+                      asGaeilge: isGaeilgeMode && asGaeilge,
                       onTap: () {
                         onLetterTap(displayChar);
                         if ((isFadaMode || isAltHeld) && hasFada) {
@@ -435,6 +446,15 @@ class _TypewriterKeyboard extends ConsumerWidget {
                 isActive: isFadaMode || isAltHeld,
                 onTap: () =>
                     ref.read(fadaModeProvider.notifier).state = !isFadaMode,
+              ),
+              _KeyboardKey(
+                display: 'Gaeilge',
+                value: 'GAE',
+                type: KeyType.modifier,
+                flex: 15,
+                isActive: isGaeilgeMode,
+                onTap: () => ref.read(gaeilgeModeProvider.notifier).state =
+                    !isGaeilgeMode,
               ),
               _KeyboardKey(
                 display: '',
@@ -604,6 +624,7 @@ class _KeyboardKey extends ConsumerWidget {
   final int flex;
   final bool isActive;
   final bool hasFada;
+  final bool asGaeilge; //naming conventions?
   final VoidCallback onTap;
   final VoidCallback? onLongPress;
 
@@ -615,6 +636,7 @@ class _KeyboardKey extends ConsumerWidget {
     this.flex = 10,
     this.isActive = false,
     this.hasFada = false,
+    this.asGaeilge = false,
     required this.onTap,
     this.onLongPress,
   });
@@ -719,7 +741,7 @@ class _KeyboardKey extends ConsumerWidget {
 
   Color _getKeyBackgroundColor(bool isPressed, BuildContext context) {
     if (isPressed) {
-      return hasFada
+      return hasFada || asGaeilge
           ? Theme.of(context).colorScheme.primary
           : Colors.green.withAlpha(51);
     }
@@ -727,6 +749,9 @@ class _KeyboardKey extends ConsumerWidget {
       return Theme.of(context).colorScheme.primary.withAlpha(51);
     }
     if (hasFada) {
+      return Theme.of(context).colorScheme.primary.withAlpha(26);
+    }
+    if (asGaeilge) {
       return Theme.of(context).colorScheme.primary.withAlpha(26);
     }
     return Theme.of(context).colorScheme.surface;
