@@ -15,6 +15,7 @@ class LessonScreen extends ConsumerWidget {
         ref.watch(lessonDefinitionProvider(plantedTreeId));
 
     return Scaffold(
+      key: const Key('lesson_scaffold'),
       appBar: AppBar(
         title: lessonDefinitionAsync.when(
           data: (lessonDef) => Text(lessonDef.lessonName),
